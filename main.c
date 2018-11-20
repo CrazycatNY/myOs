@@ -5,6 +5,12 @@ unsigned char *memcpy(unsigned char *dest, const unsigned char *src, int count)
 {
 	/* Add code here to copy 'count' bytes of data from 'src' 
 	 * to 'dest', finally return 'dest'*/
+	unsigned char *d = dest;
+	while(count--)
+	{
+		*d++ = *src++;
+	}
+	return dest;
 }
 
 
@@ -14,6 +20,12 @@ unsigned char *memset(unsigned char *dest, unsigned char val, int count)
 		Add code here to set 'count' bytes in 'dest' to 'val'.
 		Again,return 'dest'
 	*/
+	unsigned char *d = dest;
+	while(count--)
+	{
+		*d++ = val;
+	}
+	return dest;
 }
 
 unsigned short *memsetw(unsigned short *dest, unsigned short val, int count)
@@ -24,6 +36,12 @@ unsigned short *memsetw(unsigned short *dest, unsigned short val, int count)
 		the above, provided that your local variables if any, are
 		unsigned short
 	*/
+	unsigned short *d = dest;
+	while(count--)
+	{
+		*d++ = val;
+	}
+	return dest;
 }
 
 
@@ -34,6 +52,12 @@ int strlen(const char *str)
 		many characters it needs to check before it finds a 0.
 		In simple words, it returns the length in bytes of a string
 	*/
+	int i = 0;
+	while(*str++ != 0)
+	{
+		i ++;
+	}
+	return i;
 }
 
 
@@ -46,8 +70,13 @@ unsigned char inportb(unsigned short _port)
 {
 	unsigned char rv;
 	__asm__ __volatile__("inb %1, %0":"=a"(rv):"dN"(_port));
+	return rv;
 }
 
+void outportb(unsigned short _port, unsigned char _data)
+{
+	__asm__ __volatile__("outb %1, %0"::"dN"(_port), "a"(_data));
+}
 
 /*
 	This is a very simple main() function. All it does is sit in an
@@ -63,5 +92,7 @@ void main()
 		and leave this loop in. there is an endless loop in 'start.asm'
 		also. if you accidentally delete this next line
 	*/
+	init_video();
+	puts("hello world");
 	for(;;);
 }
