@@ -31,7 +31,7 @@ void scroll(void)
 			back in the buffer by a line
 		*/
 		temp = csr_y - 25 + 1;
-		memcpy(textmemptr, textmemptr + temp * 80, (25 - temp) * 80 * 2);
+		memcpy((void *)textmemptr, (void *)(textmemptr + temp * 80), (25 - temp) * 80 * 2);
 
 		/*
 			Finally, we set the chunk of memory that occupies
@@ -78,7 +78,6 @@ void move_csr(void)
 void cls()
 {
 	unsigned blank;
-	int i;
 
 	/*
 		Again, we need the 'short' that will be used to
@@ -184,7 +183,7 @@ void putch(unsigned char c)
 void puts(unsigned char *text)
 {
 	int i;
-	for(i=0; i<strlen(text); i++)
+	for(i=0; i<strlen((void *)text); i++)
 	{
 		putch(text[i]);
 	}
