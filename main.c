@@ -87,7 +87,7 @@ int main()
     /*
        You would add commands after here
      */
-
+    gdt_install();
     /*
        and leave this loop in. there is an endless loop in 'start.asm'
        also. if you accidentally delete this next line

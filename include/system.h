@@ -23,4 +23,6 @@ extern void settextcolor(unsigned char forecolor, unsigned char backcolor);
 
 extern void init_video(void);
 
+extern void gdt_install(void);
+
 #endif
