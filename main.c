@@ -78,6 +78,14 @@ void outportb(unsigned short _port, unsigned char _data)
     __asm__ __volatile__("outb %1, %0"::"dN"(_port), "a"(_data));
 }
 
+void test()
+{
+    int a = 'a';
+
+    puts("pppppppppppppppppppppppppp\n");
+    puts((a/0));
+    puts("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\n");
+}
 /*
    This is a very simple main() function. All it does is sit in an
    infinite loop. This will be like our 'idle' loop
@@ -88,12 +96,15 @@ int main()
        You would add commands after here
      */
     gdt_install();
+    idt_install();
+    isrs_install();
     /*
        and leave this loop in. there is an endless loop in 'start.asm'
        also. if you accidentally delete this next line
      */
     init_video();
-    puts((void *)"hello world");
+    puts((void *)"Welcome to Crazycat OS\n");
+    test();
     for(;;);
     return 0;
 }
