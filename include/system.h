@@ -40,5 +40,15 @@ extern void gdt_install(void);
 extern void idt_set_gate(unsigned char num, unsigned long base, unsigned short sel, unsigned char flags);
 
 extern void idt_install();
+
 extern void isrs_install();
+
+extern void irq_install();
+
+extern void irq_install_handler();
+
+extern void irq_unstall_handler();
+
+extern void timer_install();
+
 #endif

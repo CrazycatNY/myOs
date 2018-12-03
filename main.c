@@ -82,9 +82,9 @@ void test()
 {
     int a = 'a';
 
-    puts("pppppppppppppppppppppppppp\n");
+    puts("There will divide 0!!\n");
     puts((a/0));
-    puts("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\n");
+    puts("This code will be never executed!!!\n");
 }
 /*
    This is a very simple main() function. All it does is sit in an
@@ -98,6 +98,10 @@ int main()
     gdt_install();
     idt_install();
     isrs_install();
+    irq_install();
+    __asm__ __volatile__("sti");
+
+    timer_install();
     /*
        and leave this loop in. there is an endless loop in 'start.asm'
        also. if you accidentally delete this next line
