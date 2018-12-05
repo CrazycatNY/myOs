@@ -99,16 +99,17 @@ int main()
     idt_install();
     isrs_install();
     irq_install();
-    __asm__ __volatile__("sti");
-
     timer_install();
+    keyboard_install();
+
+    __asm__ __volatile__("sti");
     /*
        and leave this loop in. there is an endless loop in 'start.asm'
        also. if you accidentally delete this next line
      */
     init_video();
     puts((void *)"Welcome to Crazycat OS\n");
-    test();
+    //test();
     for(;;);
     return 0;
 }

@@ -103,7 +103,7 @@ char *exception_messages[] =
     "Bad TSS",
     "Segment Not Present",
     "Stack Fault",
-    "General Prorection Fault",
+    "General Protection Fault",
     "Page Fault",
     "Unknown Interrupt",
     "Coprocessor Fault",

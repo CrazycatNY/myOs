@@ -51,4 +51,6 @@ extern void irq_unstall_handler();
 
 extern void timer_install();
 
+extern void keyboard_install();
+
 #endif

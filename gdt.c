@@ -75,7 +75,7 @@ void gdt_set_gate(int num, unsigned long base, unsigned long limit, unsigned
         Setup the descriptor limits
      */
     gdt[num].limit_low = (limit & 0xFFFF);
-    gdt[num].granularity |= ((limit >> 16) & 0xF0);
+    gdt[num].granularity = ((limit >> 16) & 0xF0);
 
    /*
         Finally, set up the granularity and access flags
